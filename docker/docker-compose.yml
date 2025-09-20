@@ -1,0 +1,17 @@
+services:
+    app-db:
+        image: mysql:8.0.41-debian
+        container_name: app-db
+        restart: always
+        tty: true
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+        ports:
+            - ${DB_PORT}:3306
+        volumes:
+            - app-db:/var/lib/mysql
+volumes:
+    app-db:
